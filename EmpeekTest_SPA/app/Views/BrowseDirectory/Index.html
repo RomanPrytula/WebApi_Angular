@@ -1,0 +1,10 @@
+﻿<div>
+        <label for="DirSelect"> Select directory: </label><br>
+        <select name="DirSelect" ng-model="SelectDir" >
+            <option ng-selected="selected">{{Dirs[0]}}</option>
+            <option ng-repeat="dir in Dirs.slice(1)" > {{dir}}</option>
+        </select>
+
+        <br>
+        <a href='#/Folder/FolderContent/{{SelectDir.replace(" ","")}}'> DisplayDirectory </a>
+</div>

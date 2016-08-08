@@ -1,0 +1,35 @@
+﻿<div class="row">
+    <div class="col-md-4">
+        <label for="FolderSelect"> Select folder: </label><br>
+        <div ng-if="IsFolders">
+            <select option:empty { display:none } name="FolderSelect" ng-model="SelectFold" required>
+                <option ng-selected="selected">{{FolderData.subFolders[0]}}</option>
+                <option ng-repeat="folder in FolderData.subFolders.slice(1)"> {{folder}}</option>
+            </select>
+            <br>
+            <a href='#/Folder/FolderContent/{{SelectFold.replace(" ","")}}'> DisplayFolderContent </a>
+            <br>
+            <a href='#/CountFolderFiles/Index/{{SelectFold.replace(" ","")}}'> FolderFilesCount </a>
+        </div>
+
+        <div ng-if="!IsFolders">
+            <p class="empty_data"> No folders for display </p>
+        </div>
+        <a href="#/"> Back </a>
+
+    </div>
+
+    <div class="col-md-4">
+        <p> <b>Current folder path:</b> {{currentFolderPath}}  </p>
+        <label for="FolderFiles"> Folder files: </label><br>
+        <div name="FolderFiles" class="files_style" ng-if="IsFiles">
+            <ol>
+                <li ng-repeat="file in FolderData.files">{{file}}
+            </ol>
+        </div>
+        <div ng-if="!IsFiles">
+            <p class="empty_data"> No files for display </p>
+        </div>
+    </div>
+
+</div>
